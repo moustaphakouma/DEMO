@@ -3,75 +3,333 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Le Baobab Doré</title>
+<title>Le Baobab Doré – Restaurant Africain</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Lato:wght@300;400;600&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{font-family:'Lato',sans-serif;background:#FBF7EF;color:#3A2010;}
+
+/* NAV */
+nav{position:fixed;top:0;width:100%;z-index:100;background:rgba(44,26,14,0.97);display:flex;align-items:center;justify-content:space-between;padding:0 6%;height:65px;}
+.nav-logo{font-family:'Playfair Display',serif;color:#C8922A;font-size:1.3rem;letter-spacing:1px;}
+.nav-links{display:flex;gap:2rem;list-style:none;}
+.nav-links a{color:#E8D9B5;text-decoration:none;font-size:0.82rem;letter-spacing:1.5px;text-transform:uppercase;transition:color .2s;}
+.nav-links a:hover{color:#C8922A;}
+.nav-wa{background:#25D366;color:white!important;padding:8px 18px;border-radius:50px;font-weight:700!important;}
+
+/* HERO */
+.hero{min-height:100vh;background:linear-gradient(to bottom,rgba(44,26,14,0.6) 0%,rgba(44,26,14,0.4) 50%,rgba(44,26,14,0.88) 100%),url('https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=1400&q=80') center/cover no-repeat;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:100px 6% 80px;}
+.hero-badge{border:1px solid #C8922A;color:#C8922A;font-size:0.7rem;letter-spacing:3px;text-transform:uppercase;padding:6px 20px;border-radius:2px;margin-bottom:1.5rem;display:inline-block;}
+.hero h1{font-family:'Playfair Display',serif;font-size:clamp(2.5rem,6vw,5rem);color:#F5EFE0;line-height:1.1;margin-bottom:1.2rem;}
+.hero h1 span{color:#C8922A;}
+.hero p{color:#E8D9B5;font-size:1.1rem;font-weight:300;max-width:500px;line-height:1.8;margin-bottom:2.5rem;}
+.btn-wa{display:inline-flex;align-items:center;gap:.7rem;background:#25D366;color:#fff;padding:15px 38px;font-weight:700;font-size:1rem;border-radius:50px;text-decoration:none;box-shadow:0 6px 24px rgba(37,211,102,0.4);transition:all .2s;}
+.btn-wa:hover{background:#1ebe5d;transform:translateY(-3px);}
+.btn-gold{display:inline-flex;align-items:center;gap:.7rem;background:transparent;border:2px solid #C8922A;color:#C8922A;padding:14px 36px;font-weight:600;font-size:0.95rem;border-radius:50px;text-decoration:none;margin-left:1rem;transition:all .2s;}
+.btn-gold:hover{background:#C8922A;color:#fff;}
+.hero-btns{display:flex;flex-wrap:wrap;gap:1rem;justify-content:center;}
+
+/* STATS */
+.stats{background:#2C1A0E;padding:50px 6%;}
+.stats-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:2rem;max-width:900px;margin:0 auto;text-align:center;}
+.stat-num{font-family:'Playfair Display',serif;font-size:2.8rem;color:#C8922A;line-height:1;}
+.stat-label{color:#E8D9B5;font-size:0.78rem;letter-spacing:2px;text-transform:uppercase;margin-top:.4rem;}
+
+/* SECTIONS */
+section{padding:90px 6%;}
+.section-label{font-size:0.7rem;letter-spacing:3px;text-transform:uppercase;color:#C8922A;text-align:center;margin-bottom:.5rem;}
+.section-title{font-family:'Playfair Display',serif;font-size:clamp(1.8rem,4vw,2.8rem);text-align:center;color:#2C1A0E;margin-bottom:.8rem;}
+.section-sub{text-align:center;color:#9C7A5A;font-size:1rem;max-width:520px;margin:0 auto 3.5rem;line-height:1.8;}
+
+/* ABOUT */
+.about{background:#F5EFE0;}
+.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:4rem;max-width:1000px;margin:0 auto;align-items:center;}
+.about-img{width:100%;height:420px;object-fit:cover;border-radius:8px;box-shadow:0 20px 60px rgba(44,26,14,0.2);}
+.about-text h2{font-family:'Playfair Display',serif;font-size:2.2rem;color:#2C1A0E;margin-bottom:1.2rem;line-height:1.2;}
+.about-text p{color:#6B4F3A;line-height:1.9;margin-bottom:1rem;font-size:1rem;}
+.about-tag{display:inline-block;background:#C8922A;color:#fff;padding:4px 14px;border-radius:20px;font-size:0.75rem;letter-spacing:1px;margin-bottom:1rem;}
+
+/* MENU */
+.menu{background:#FBF7EF;}
+.menu-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:2rem;max-width:1100px;margin:0 auto;}
+.menu-card{background:#fff;border-radius:10px;overflow:hidden;box-shadow:0 4px 20px rgba(107,63,31,0.08);transition:all .3s;}
+.menu-card:hover{transform:translateY(-8px);box-shadow:0 16px 40px rgba(107,63,31,0.16);}
+.menu-card img{width:100%;height:210px;object-fit:cover;display:block;}
+.menu-body{padding:1.3rem 1.5rem 1.6rem;}
+.menu-tag{font-size:0.65rem;letter-spacing:2px;text-transform:uppercase;color:#C8922A;margin-bottom:.4rem;}
+.menu-name{font-family:'Playfair Display',serif;font-size:1.2rem;color:#2C1A0E;margin-bottom:.5rem;}
+.menu-desc{font-size:0.87rem;color:#9C7A5A;line-height:1.6;margin-bottom:1rem;}
+.menu-footer{display:flex;align-items:center;justify-content:space-between;}
+.menu-price{font-family:'Playfair Display',serif;font-size:1.3rem;color:#6B3F1F;font-weight:600;}
+.menu-price span{font-size:0.75rem;font-family:'Lato',sans-serif;color:#9C7A5A;}
+
+/* GALLERY */
+.gallery{background:#2C1A0E;padding:90px 6%;}
+.gallery .section-title{color:#F5EFE0;}
+.gallery .section-label{color:#C8922A;}
+.gallery .section-sub{color:#9C7A5A;}
+.gallery-grid{display:grid;grid-template-columns:repeat(3,1fr);grid-template-rows:auto auto;gap:1rem;max-width:1100px;margin:0 auto;}
+.gallery-grid img{width:100%;height:220px;object-fit:cover;border-radius:6px;display:block;transition:all .35s;filter:brightness(.85) saturate(.8);}
+.gallery-grid img:hover{filter:brightness(1) saturate(1.1);transform:scale(1.03);}
+.gallery-grid img:first-child{grid-column:1/3;height:340px;}
+
+/* TESTIMONIALS */
+.testimonials{background:#F5EFE0;}
+.testi-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(270px,1fr));gap:2rem;max-width:1000px;margin:0 auto;}
+.testi-card{background:#fff;border-radius:10px;padding:2rem;box-shadow:0 4px 20px rgba(107,63,31,0.07);border-left:4px solid #C8922A;}
+.testi-stars{color:#C8922A;font-size:1rem;margin-bottom:.8rem;}
+.testi-text{color:#6B4F3A;font-size:0.95rem;line-height:1.8;font-style:italic;margin-bottom:1.2rem;}
+.testi-author{font-size:0.8rem;letter-spacing:1.5px;text-transform:uppercase;color:#C8922A;font-weight:600;}
+
+/* HORAIRES */
+.horaires{background:#FBF7EF;}
+.horaires-grid{display:grid;grid-template-columns:1fr 1fr;gap:4rem;max-width:900px;margin:0 auto;}
+.horaires-card{background:#fff;border-radius:10px;padding:2.5rem;box-shadow:0 4px 20px rgba(107,63,31,0.08);}
+.horaires-card h3{font-family:'Playfair Display',serif;font-size:1.4rem;color:#2C1A0E;margin-bottom:1.5rem;padding-bottom:1rem;border-bottom:2px solid #F5EFE0;}
+.horaire-row{display:flex;justify-content:space-between;padding:.6rem 0;border-bottom:1px solid #F5EFE0;font-size:0.9rem;}
+.horaire-row:last-child{border:none;}
+.horaire-day{color:#6B4F3A;}
+.horaire-time{color:#C8922A;font-weight:600;}
+.adresse-info{display:flex;flex-direction:column;gap:1.2rem;}
+.adresse-item{display:flex;gap:1rem;align-items:flex-start;}
+.adresse-icon{font-size:1.4rem;}
+.adresse-text h4{font-size:0.85rem;letter-spacing:1.5px;text-transform:uppercase;color:#C8922A;margin-bottom:.3rem;}
+.adresse-text p{color:#6B4F3A;font-size:0.95rem;line-height:1.6;}
+
+/* CTA */
+.cta{background:linear-gradient(135deg,#6B3F1F 0%,#2C1A0E 100%);text-align:center;padding:100px 6%;}
+.cta .section-label{color:#C8922A;}
+.cta h2{font-family:'Playfair Display',serif;font-size:clamp(2rem,4vw,3rem);color:#F5EFE0;margin-bottom:1rem;}
+.cta p{color:#E8D9B5;font-size:1.05rem;max-width:480px;margin:0 auto 2.5rem;line-height:1.8;}
+
+/* FLOAT WA */
+.float-wa{position:fixed;bottom:28px;right:28px;width:58px;height:58px;background:#25D366;border-radius:50%;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 20px rgba(37,211,102,0.5);z-index:999;text-decoration:none;font-size:1.6rem;transition:all .2s;}
+.float-wa:hover{transform:scale(1.12);}
+
+/* FOOTER */
+footer{background:#1A0F07;color:#9C7A5A;text-align:center;padding:3rem 6%;font-size:0.85rem;}
+.footer-logo{font-family:'Playfair Display',serif;color:#C8922A;font-size:1.5rem;margin-bottom:.8rem;}
+
+/* RESPONSIVE */
+@media(max-width:768px){
+  .nav-links{display:none;}
+  .about-grid{grid-template-columns:1fr;}
+  .horaires-grid{grid-template-columns:1fr;}
+  .gallery-grid{grid-template-columns:1fr 1fr;}
+  .gallery-grid img:first-child{grid-column:1/-1;}
+  .stats-grid{grid-template-columns:repeat(2,1fr);}
+}
+</style>
 </head>
-<body style="font-family:Arial;background:#F5EFE0;margin:0;padding:0;">
+<body>
 
-<div style="background:#2C1A0E;padding:20px;text-align:center;">
-  <h1 style="color:#C8922A;margin:0;">Le Baobab Doré</h1>
-  <p style="color:#E8D9B5;margin:5px 0;">Restaurant Africain Traditionnel</p>
-</div>
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">Le Baobab Doré</div>
+  <ul class="nav-links">
+    <li><a href="#apropos">À propos</a></li>
+    <li><a href="#menu">Menu</a></li>
+    <li><a href="#galerie">Galerie</a></li>
+    <li><a href="#avis">Avis</a></li>
+    <li><a href="#horaires">Horaires</a></li>
+    <li><a href="https://wa.me/242XXXXXXXXX" class="nav-wa">📱 Commander</a></li>
+  </ul>
+</nav>
 
-<div style="text-align:center;padding:60px 20px;background:#6B3F1F;">
-  <h2 style="color:#F5EFE0;font-size:2.5rem;">La saveur africaine dans chaque plat</h2>
-  <p style="color:#E8D9B5;">Cuisine traditionnelle, ingrédients frais, ambiance chaleureuse.</p>
-  <a href="https://wa.me/242XXXXXXXXX" style="background:#25D366;color:white;padding:15px 40px;border-radius:50px;text-decoration:none;font-weight:bold;display:inline-block;margin-top:20px;">
-    📱 Commander sur WhatsApp
-  </a>
-</div>
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-badge">Restaurant & Traiteur · Brazzaville</div>
+  <h1>La saveur <span>africaine</span><br>dans chaque plat</h1>
+  <p>Cuisine traditionnelle préparée avec passion, des ingrédients frais du marché local, une ambiance chaleureuse et familiale.</p>
+  <div class="hero-btns">
+    <a href="https://wa.me/242XXXXXXXXX" class="btn-wa">📱 Commander sur WhatsApp</a>
+    <a href="#menu" class="btn-gold">Voir le menu</a>
+  </div>
+</section>
 
-<div style="padding:40px 20px;text-align:center;">
-  <h2 style="color:#2C1A0E;">Notre Menu</h2>
-  
-  <div style="display:flex;flex-wrap:wrap;justify-content:center;gap:20px;max-width:900px;margin:0 auto;">
-    
-    <div style="background:white;border-radius:10px;padding:20px;width:250px;box-shadow:0 4px 15px rgba(0,0,0,0.1);">
-      <h3 style="color:#6B3F1F;">Poulet Yassa</h3>
-      <p style="color:#9C7A5A;">Poulet mariné au citron et oignons caramélisés, servi avec riz parfumé.</p>
-      <p style="color:#C8922A;font-weight:bold;font-size:1.2rem;">3 500 FCFA</p>
-    </div>
-
-    <div style="background:white;border-radius:10px;padding:20px;width:250px;box-shadow:0 4px 15px rgba(0,0,0,0.1);">
-      <h3 style="color:#6B3F1F;">Brochettes de bœuf</h3>
-      <p style="color:#9C7A5A;">Viande tendre marinée aux épices maison, grillée à la braise.</p>
-      <p style="color:#C8922A;font-weight:bold;font-size:1.2rem;">2 800 FCFA</p>
-    </div>
-
-    <div style="background:white;border-radius:10px;padding:20px;width:250px;box-shadow:0 4px 15px rgba(0,0,0,0.1);">
-      <h3 style="color:#6B3F1F;">Thiéboudienne</h3>
-      <p style="color:#9C7A5A;">Riz au poisson sénégalais, légumes braisés et poisson entier.</p>
-      <p style="color:#C8922A;font-weight:bold;font-size:1.2rem;">4 000 FCFA</p>
-    </div>
-
-    <div style="background:white;border-radius:10px;padding:20px;width:250px;box-shadow:0 4px 15px rgba(0,0,0,0.1);">
-      <h3 style="color:#6B3F1F;">Soupe de poisson</h3>
-      <p style="color:#9C7A5A;">Bouillon riche aux légumes du marché et épices naturelles.</p>
-      <p style="color:#C8922A;font-weight:bold;font-size:1.2rem;">1 500 FCFA</p>
-    </div>
-
-    <div style="background:white;border-radius:10px;padding:20px;width:250px;box-shadow:0 4px 15px rgba(0,0,0,0.1);">
-      <h3 style="color:#6B3F1F;">Jus de Bissap</h3>
-      <p style="color:#9C7A5A;">Fleurs d'hibiscus infusées, sucre de canne, menthe fraîche.</p>
-      <p style="color:#C8922A;font-weight:bold;font-size:1.2rem;">800 FCFA</p>
-    </div>
-
-    <div style="background:white;border-radius:10px;padding:20px;width:250px;box-shadow:0 4px 15px rgba(0,0,0,0.1);">
-      <h3 style="color:#6B3F1F;">Beignets au miel</h3>
-      <p style="color:#9C7A5A;">Beignets dorés nappés de miel naturel et noix de coco râpée.</p>
-      <p style="color:#C8922A;font-weight:bold;font-size:1.2rem;">1 200 FCFA</p>
-    </div>
-
+<!-- STATS -->
+<div class="stats">
+  <div class="stats-grid">
+    <div><div class="stat-num">12+</div><div class="stat-label">Années d'expérience</div></div>
+    <div><div class="stat-num">40+</div><div class="stat-label">Plats au catalogue</div></div>
+    <div><div class="stat-num">98%</div><div class="stat-label">Clients satisfaits</div></div>
+    <div><div class="stat-num">7j/7</div><div class="stat-label">Ouvert tous les jours</div></div>
   </div>
 </div>
 
-<div style="background:#2C1A0E;text-align:center;padding:40px 20px;">
-  <p style="color:#C8922A;font-size:1.5rem;font-weight:bold;">Vous avez faim ?</p>
-  <p style="color:#E8D9B5;">Commandez sur place, à emporter ou pour un événement.</p>
-  <a href="https://wa.me/242XXXXXXXXX" style="background:#25D366;color:white;padding:15px 40px;border-radius:50px;text-decoration:none;font-weight:bold;display:inline-block;margin-top:15px;">
-    📱 Commander sur WhatsApp
-  </a>
-  <p style="color:#9C7A5A;margin-top:30px;font-size:0.85rem;">© 2026 Le Baobab Doré · Brazzaville · Ouvert 7j/7</p>
-</div>
+<!-- ABOUT -->
+<section class="about" id="apropos">
+  <div class="about-grid">
+    <img class="about-img" src="https://images.unsplash.com/photo-1555396273-367ea4eb4db5?w=800&q=80" alt="Notre restaurant"/>
+    <div class="about-text">
+      <div class="about-tag">Notre histoire</div>
+      <h2>Une cuisine du cœur, transmise de génération en génération</h2>
+      <p>Le Baobab Doré est né d'une passion simple : faire découvrir la richesse de la cuisine africaine traditionnelle à travers des plats authentiques, généreux et préparés avec amour.</p>
+      <p>Chaque recette est le fruit d'un savoir-faire familial transmis sur plus d'une décennie. Nos ingrédients sont sourcés localement, frais chaque matin au marché.</p>
+      <p>Que vous veniez en famille, entre amis, ou pour un événement professionnel — notre table est toujours prête à vous accueillir.</p>
+    </div>
+  </div>
+</section>
+
+<!-- MENU -->
+<section class="menu" id="menu">
+  <p class="section-label">Notre catalogue</p>
+  <h2 class="section-title">Les plats du moment</h2>
+  <p class="section-sub">Des recettes authentiques mijotées avec amour, pour vous et vos proches.</p>
+  <div class="menu-grid">
+
+    <div class="menu-card">
+      <img src="https://images.unsplash.com/photo-1567620905732-2d1ec7ab7445?w=600&q=80" alt="Poulet Yassa"/>
+      <div class="menu-body">
+        <div class="menu-tag">⭐ Plat signature</div>
+        <div class="menu-name">Poulet Yassa</div>
+        <div class="menu-desc">Poulet mariné au citron & oignons caramélisés, servi avec riz parfumé.</div>
+        <div class="menu-footer"><div class="menu-price">3 500 <span>FCFA</span></div></div>
+      </div>
+    </div>
+
+    <div class="menu-card">
+      <img src="https://images.unsplash.com/photo-1555939594-58d7cb561ad1?w=600&q=80" alt="Brochettes"/>
+      <div class="menu-body">
+        <div class="menu-tag">🔥 Grillades</div>
+        <div class="menu-name">Brochettes de bœuf</div>
+        <div class="menu-desc">Viande tendre marinée aux épices maison, grillée à la braise. Accompagnée de plantain.</div>
+        <div class="menu-footer"><div class="menu-price">2 800 <span>FCFA</span></div></div>
+      </div>
+    </div>
+
+    <div class="menu-card">
+      <img src="https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=600&q=80" alt="Thiéboudienne"/>
+      <div class="menu-body">
+        <div class="menu-tag">🍽️ Plat du jour</div>
+        <div class="menu-name">Thiéboudienne</div>
+        <div class="menu-desc">Riz au poisson sénégalais cuisiné à la tomate, légumes braisés et poisson entier.</div>
+        <div class="menu-footer"><div class="menu-price">4 000 <span>FCFA</span></div></div>
+      </div>
+    </div>
+
+    <div class="menu-card">
+      <img src="https://images.unsplash.com/photo-1547592166-23ac45744acd?w=600&q=80" alt="Soupe"/>
+      <div class="menu-body">
+        <div class="menu-tag">🥣 Entrée</div>
+        <div class="menu-name">Soupe de poisson</div>
+        <div class="menu-desc">Bouillon riche aux légumes du marché, poisson frais, épices naturelles.</div>
+        <div class="menu-footer"><div class="menu-price">1 500 <span>FCFA</span></div></div>
+      </div>
+    </div>
+
+    <div class="menu-card">
+      <img src="https://images.unsplash.com/photo-1499028344343-cd173ffc68a9?w=600&q=80" alt="Bissap"/>
+      <div class="menu-body">
+        <div class="menu-tag">🥤 Boisson</div>
+        <div class="menu-name">Jus de Bissap</div>
+        <div class="menu-desc">Fleurs d'hibiscus infusées, sucre de canne, menthe fraîche. Servi bien frais.</div>
+        <div class="menu-footer"><div class="menu-price">800 <span>FCFA</span></div></div>
+      </div>
+    </div>
+
+    <div class="menu-card">
+      <img src="https://images.unsplash.com/photo-1551024601-bec78aea704b?w=600&q=80" alt="Beignets"/>
+      <div class="menu-body">
+        <div class="menu-tag">🍯 Dessert</div>
+        <div class="menu-name">Beignets au miel</div>
+        <div class="menu-desc">Beignets dorés à la pâte maison, nappés de miel naturel et noix de coco râpée.</div>
+        <div class="menu-footer"><div class="menu-price">1 200 <span>FCFA</span></div></div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- GALLERY -->
+<section class="gallery" id="galerie">
+  <p class="section-label">Ambiance & cuisine</p>
+  <h2 class="section-title">Notre univers</h2>
+  <p class="section-sub">Des moments partagés, une cuisine ouverte, une atmosphère qui donne faim.</p>
+  <div class="gallery-grid">
+    <img src="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=900&q=80" alt="Salle"/>
+    <img src="https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?w=600&q=80" alt="Plat"/>
+    <img src="https://images.unsplash.com/photo-1540189549336-e6e99c3679fe?w=600&q=80" alt="Cuisine"/>
+    <img src="https://images.unsplash.com/photo-1482049016688-2d3e1b311543?w=600&q=80" alt="Plat 2"/>
+    <img src="https://images.unsplash.com/photo-1473093295043-cdd812d0e601?w=600&q=80" alt="Plat 3"/>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="testimonials" id="avis">
+  <p class="section-label">Ce qu'ils disent</p>
+  <h2 class="section-title">Avis de nos clients</h2>
+  <p class="section-sub">Des témoignages vrais, de gens qui reviennent chaque semaine.</p>
+  <div class="testi-grid">
+    <div class="testi-card">
+      <div class="testi-stars">★★★★★</div>
+      <p class="testi-text">"Le meilleur Yassa que j'ai mangé de toute ma vie. La sauce est incroyable et l'accueil chaleureux. Je reviens chaque vendredi."</p>
+      <div class="testi-author">— Marie K., cliente fidèle</div>
+    </div>
+    <div class="testi-card">
+      <div class="testi-stars">★★★★★</div>
+      <p class="testi-text">"J'ai commandé pour un événement familial, 30 personnes. Tout était parfait, livré à l'heure, les plats encore chauds. Merci !"</p>
+      <div class="testi-author">— Thierry M., événement privé</div>
+    </div>
+    <div class="testi-card">
+      <div class="testi-stars">★★★★☆</div>
+      <p class="testi-text">"Cadre agréable, musique douce, cuisine généreuse. Le bissap maison est une vraie découverte. À recommander sans hésiter."</p>
+      <div class="testi-author">— Fatoumata D., première visite</div>
+    </div>
+  </div>
+</section>
+
+<!-- HORAIRES -->
+<section class="horaires" id="horaires">
+  <p class="section-label">Informations pratiques</p>
+  <h2 class="section-title">Horaires & Adresse</h2>
+  <p class="section-sub">Venez nous rendre visite ou passez commande directement sur WhatsApp.</p>
+  <div class="horaires-grid">
+    <div class="horaires-card">
+      <h3>🕐 Nos horaires</h3>
+      <div class="horaire-row"><span class="horaire-day">Lundi – Vendredi</span><span class="horaire-time">08h00 – 22h00</span></div>
+      <div class="horaire-row"><span class="horaire-day">Samedi</span><span class="horaire-time">09h00 – 23h00</span></div>
+      <div class="horaire-row"><span class="horaire-day">Dimanche</span><span class="horaire-time">10h00 – 21h00</span></div>
+      <div class="horaire-row"><span class="horaire-day">Jours fériés</span><span class="horaire-time">10h00 – 20h00</span></div>
+    </div>
+    <div class="horaires-card">
+      <h3>📍 Nous trouver</h3>
+      <div class="adresse-info">
+        <div class="adresse-item">
+          <span class="adresse-icon">📍</span>
+          <div class="adresse-text"><h4>Adresse</h4><p>Avenue de la Paix, Quartier Bacongo<br>Brazzaville, République du Congo</p></div>
+        </div>
+        <div class="adresse-item">
+          <span class="adresse-icon">📱</span>
+          <div class="adresse-text"><h4>WhatsApp & Téléphone</h4><p>+242 XX XXX XXXX</p></div>
+        </div>
+        <div class="adresse-item">
+          <span class="adresse-icon">🚗</span>
+          <div class="adresse-text"><h4>Livraison</h4><p>Disponible dans un rayon de 5 km autour du restaurant.</p></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta">
+  <p class="section-label">Réservations & commandes</p>
+  <h2>Vous avez faim ?</h2>
+  <p>Commandez sur place, à emporter ou pour un événement. Répondons-nous directement sur WhatsApp.</p>
+  <a href="https://wa.me/242XXXXXXXXX?text=Bonjour%2C%20je%20voudrais%20passer%20une%20commande%20!" class="btn-wa">📱 Commander sur WhatsApp</a>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logo">Le Baobab Doré</div>
+  <p>Restaurant africain traditionnel · Ouvert 7j/7 · Brazzaville</p>
+  <p style="margin-top:.5rem;font-size:0.75rem;opacity:.4;">© 2026 Le Baobab Doré. Tous droits réservés.</p>
+</footer>
+
+<!-- BOUTON FLOTTANT WHATSAPP -->
+<a class="float-wa" href="https://wa.me/242XXXXXXXXX" target="_blank" title="Commander sur WhatsApp">📱</a>
 
 </body>
 </html>
